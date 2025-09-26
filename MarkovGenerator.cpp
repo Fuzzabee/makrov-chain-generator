@@ -14,6 +14,8 @@
 #include <limits>
 #include <string>
 
+#include "StringUtils.h"
+
 const int  NUMBER_OF_SENTENCES_TO_CREATE = 5;
 const char QUIT_CHARACTER = '3';
 
@@ -53,28 +55,34 @@ void markovGeneratorUser() {
 }
 
 void mainMenu() {
-    std::cout << "Fuzzabee's Markov Sentence Generator\n\n";
-    printMainMenu();
-
-    char menuSelection = '0';
-    while (menuSelection != QUIT_CHARACTER) {
-        std::cout << "Enter a number: ";
-        menuSelection = getUserChar();
-        switch (menuSelection) {
-            case '1':
-                markovGeneratorUser();
-                printMainMenu();
-                break;
-            case '2':
-                markovGeneratorFile();
-                printMainMenu();
-                break;
-            case '3':
-                return;
-            default:
-                std::cout << "Invalid command\n\n";
-        }
+    std::cout << "Testing StringUtils\n";
+    std::vector<std::string> strings = StringUtils::split(StringUtils::trim("    ab ac  "), 'a');
+    std::cout << "Printing results\n";
+    for (std::string s : strings) {
+        std::cout << "\"" << s << "\"" << "\n";
     }
+    // std::cout << "Fuzzabee's Markov Sentence Generator\n\n";
+    // printMainMenu();
+
+    // char menuSelection = '0';
+    // while (menuSelection != QUIT_CHARACTER) {
+    //     std::cout << "Enter a number: ";
+    //     menuSelection = getUserChar();
+    //     switch (menuSelection) {
+    //         case '1':
+    //             markovGeneratorUser();
+    //             printMainMenu();
+    //             break;
+    //         case '2':
+    //             markovGeneratorFile();
+    //             printMainMenu();
+    //             break;
+    //         case '3':
+    //             return;
+    //         default:
+    //             std::cout << "Invalid command\n\n";
+    //     }
+    // }
 }
 
 int main(int argc, char* argv[]) {
